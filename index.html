@@ -34,13 +34,13 @@
   <section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
     <div class="hero-video" style="height: 100%; width: 177.77777778vh; min-width: 100%;min-height: 56.25vw;">
       <video playsinline autoplay muted loop>
-        <source src=" ./resources/placeholder.mp4" type="video/mp4">
+        <source src=" ./resources/cover.mp4" type="video/mp4">
       </video>
     </div>
     <div class="hero-video is-hidden-tablet is-inline-block-mobile"
       style="height: 154.28571428vw; width: 100%; min-width:64.81481481vh;min-height:100%;">
       <video playsinline autoplay muted loop>
-        <source src="./resources/placeholder.mp4" type="video/mp4">
+        <source src="./resources/cover.mp4" type="video/mp4">
       </video>
     </div>
     <div class="overlay"></div>
@@ -148,7 +148,7 @@
     <!-- Hero footer: will stick at the bottom -->
   </section>
 
-<section class="section">
+<!-- <section class="section">
   <div class="container">
     <div class="columns is-centered has-text-centered">
       <div class="column is-two-thirds">
@@ -159,22 +159,14 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
-<h2 class="title is-2" style="text-align: center;">Abstract</h2>
 <section class="section">
   <div class="container" style="width: 50%">
     <div class="columns is-centered">
       <div class="content has-text-justified scroll-element">
-        <p>
-          Recent works in the robot learning community have successfully introduced generalist models capable of controlling various robot embodiments across a wide range of tasks, 
-          such as navigation and locomotion. However, achieving agile control, which pushes the limits of robotic performance, still relies on specialist models that require extensive parameter 
-          tuning. To leverage the adaptation capability of generalist approaches and push robots' specialist-level capabilities, we propose <b>AnyCar</b>, a transformer-based generalist dynamic model 
-          designed for agile control of various wheeled robots. To collect training data, we unify multiple simulators and leverage different physics backends to simulate vehicles with diverse sizes,
-          scales, and physical properties across various terrains. Using robust training and real-world fine-tuning methods, our model ensures precise adaptation to different vehicles, 
-          even in the presence of state estimation errors. In our experiments, we demonstrate both few-shot and zero-shot control across different vehicles and environments, where our model, 
-          combined with a sampling-based MPC,  outperforms specialist models by 54%. These results represent a key step toward building a foundation model for agile wheeled control. We will also open-source our framework to support further research in the community.
-        </p>
+          
+          <h2 class="title is-2" style="text-align: center;">TL;DR; Our AnCar-Transformer can adapt to various vehicle dynamics in the real-world without any parameter-tuning!</h2>
       </div>
     </div>
   </div>
@@ -199,54 +191,73 @@
 <h2 class="title is-2" style="text-align: center;">Deployment In the Wild</h2>
 <section class="section">
   <div class="container">
+    <div class="column is-full-width is-centered has-text-centered">
+      <video controls autoplay loop muted playsinline src="./resources/drift-demo-clip.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+    </div>
     <div class="columns is-centered">
       <div class="column is-full-width is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <video controls autoplay loop muted playsinline src="./resources/outdoor-slam-tow-anycar.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-full-width is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/outdoor-slam-tire-anycar.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
     </div>
     <div class="columns is-centered">
       <div class="column is-full-width is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <video controls autoplay loop muted playsinline src="./resources/outdoor-slam-tow-specialist.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
       <div class="column is-full-width is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <video controls autoplay loop muted playsinline src="./resources/outdoor-slam-tire-specialist.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
     </div>
   </div>
 </section>
 
-<h2 class="title is-2" style="text-align: center;">In-Domain Adaptation</h2>
+<h2 class="title is-2" style="text-align: center;">Deployment In Uneven Terrain</h2>
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-full-width is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <video controls autoplay loop muted playsinline src="./resources/circle.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
-      <div class="column is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;" height="20%"></video>
-      </div>
-      <div class="column is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;" height="20%"></video>
+      <div class="column is-full-width is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/circle_2.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
     </div>
   </div>
+</section>
+
+<h2 class="title is-2" style="text-align: center;">Large-Scale Pre-training in Diverse Simulation</h2>
+<section class="section">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-full-width is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <video controls autoplay loop muted playsinline src="./resources/numeric_sim.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
       <div class="column is-full-width is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <video controls autoplay loop muted playsinline src="./resources/mujoco_sim.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
     </div>
+    <div class="columns is-centered">
+    <div class="column is-full-width is-centered has-text-centered">
+      <video controls autoplay loop muted playsinline src="./resources/isaac.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+    </div>
+    <div class="column is-full-width is-centered has-text-centered">
+      <video controls autoplay loop muted playsinline src="./resources/ac_sim.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+    </div>
   </div>
+  </div>
+</section>
+
+<h2 class="title is-2" style="text-align: center;">Few-shot Real-world Fine-tuning (Teleoperation)</h2>
+<section class="section">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-full-width is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <video controls autoplay loop muted playsinline src="./resources/teleop.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
       <div class="column is-full-width is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <video controls autoplay loop muted playsinline src="./resources/teleop-run.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
     </div>
   </div>
@@ -257,37 +268,45 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-full-width is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <video controls autoplay loop muted playsinline src="./resources/vicon-1.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
       <div class="column is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;" height="20%"></video>
+        <video controls autoplay loop muted playsinline src="./resources/vicon-2.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;" height="20%"></video>
+      </div>
+      <div class="column is-full-width is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/vicon-3.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
     </div>
+    
   </div>
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-full-width is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <video controls autoplay loop muted playsinline src="./resources/vicon-4.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+      <div class="column is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/vicon-5.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;" height="20%"></video>
       </div>
       <div class="column is-full-width is-centered has-text-centered">
-        <video controls autoplay loop muted playsinline src="./resources/placeholder.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+        <video controls autoplay loop muted playsinline src="./resources/vicon-6.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<h2 class="title is-2" style="text-align: center;">One More Thing ...</h2>
+<h2 class="title is-4" style="text-align: center;">We Open-Source Our 1/16 Car Design for Wheeled Agility Research</h2>
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/anycar_jump1.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
       </div>
     </div>
   </div>
 </section>
 
-<!-- <section class="section">
-  <div class="container">
-    <h2 class="title is-2" style="text-align: center;" id="press-coverage">Media</h2>
-    <br>
-    <div class="columns is-centered">
-      <div class="column is-centered has-text-centered">
-        <a target="_blank" href="https://spectrum.ieee.org/video-friday-drone-vs-flying-canoe?share_id=8304126&utm_campaign=RebelMouse&utm_content=IEEE+Spectrum&utm_medium=social&utm_source=twitter">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/IEEE-Spectrum.svg" width="70%"></img>
-        </a>
-      </div>
-  </div> -->
-</section>
 
 <section class="section" id="BibTeX">
   <div class="container content">
