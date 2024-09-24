@@ -50,7 +50,7 @@
         <div class="container is-size-5">
           <div class="navbar-menu">
             <div class="navbar-end">
-              <a class="navbar-item pl-4 pr-4" href="https://lecar-lab.github.io/">
+              <a class="navbar-item pl-4 pr-4" href="./resources/anycar.pdf">
                 <span class="icon" style="margin-right:5px;">
                   <img src="./static/images/pdf.svg" alt="PDF" />
                 </span>
@@ -67,7 +67,7 @@
                 </span>
                 <span>Video</span> </a>
               <span class="navbar-item  pl-4 pr-4">
-                <a href="https://lecar-lab.github.io/" class="button is-inverted is-large">
+                <a href="https://github.com/LeCAR-Lab/lecar-car" class="button is-inverted is-large">
                   <span class="icon">
                     <i class="fab fa-github"></i>
                   </span>
@@ -166,7 +166,7 @@
     <div class="columns is-centered">
       <div class="content has-text-justified scroll-element">
           
-          <h2 class="title is-2" style="text-align: center;">TL;DR; Our AnCar-Transformer can adapt to various vehicle dynamics in the real-world without any parameter-tuning!</h2>
+          <h2 class="title is-2" style="text-align: center;">TL;DR: Our AnyCar-Transformer can generalize to various vehicle dynamics in the real-world without any parameter-tuning!</h2>
       </div>
     </div>
   </div>
@@ -181,7 +181,7 @@
     <p>
       <b>AnyCar System Pipeline.</b> (1) Data Collection: We collect data in 4 different simulations to pre-train the AnyCar
       model. We separately also collect real-world data for fine-tuning of the model. (2) Model Training: We pre-train the model
-      with the simulation dataset and enhance prediction robustness through masking, adding noise, and attaching the inputs. (3)
+      with the simulation dataset and enhance prediction robustness through masking, adding noise, and attacking the inputs. (3)
       Deployment: We fine-tune the model with few-shot real-world data to achieve zero-shot transfer across different vehicles,
       environmental conditions, and state estimation methods.
     </p>
@@ -191,8 +191,11 @@
 <h2 class="title is-2" style="text-align: center;">Deployment In the Wild</h2>
 <section class="section">
   <div class="container">
-    <div class="column is-full-width is-centered has-text-centered">
-      <video controls autoplay loop muted playsinline src="./resources/drift-demo-clip.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;"></video>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width is-centered has-text-centered">
+        <video controls autoplay loop muted playsinline src="./resources/drift-demo-clip.mp4" poster="./resources/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 0.5%;"></video>
+      </div>
     </div>
     <div class="columns is-centered">
       <div class="column is-full-width is-centered has-text-centered">
