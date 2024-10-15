@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: car_foundation
+Version: 0.0.1
+Summary: car foundation
+Author: Haoru Xue
+Author-email: haorux@andrew.cmu.edu
+Requires-Dist: torch
+Requires-Dist: numpy==1.26
+Requires-Dist: casadi
+Requires-Dist: scipy
+Requires-Dist: flax
+Requires-Dist: tqdm
+Requires-Dist: pykan
+Requires-Dist: transforms3d
+Requires-Dist: scikit-learn
+Requires-Dist: wandb
+Requires-Dist: transformers
+Requires-Dist: pytorch-warmup

@@ -1,0 +1,6 @@
+data/
+*.egg-info/
+__pycache__/
+.DS_Store
+tmp/
+assetto_corsa_collect/output/

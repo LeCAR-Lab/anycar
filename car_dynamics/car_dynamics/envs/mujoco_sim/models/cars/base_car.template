@@ -1,0 +1,84 @@
+<mujoco>
+  <compiler meshdir="cars/meshes" />
+  <asset>
+    <mesh name="{C}_mushr_base_nano" file="mushr_base_nano.stl"/>
+    <mesh name="{C}_mushr_wheel" file="mushr_wheel.stl"/>
+    <mesh name="{C}_mushr_ydlidar" file="mushr_ydlidar.stl"/>
+  </asset>
+  <default>
+      <default class="{C}_wheel">
+      <geom fitscale="1.2" type="ellipsoid" friction="2 0.005 0.0001" contype="1" conaffinity="0" mesh="{C}_mushr_wheel" mass="0.498952"/>
+    </default>
+    <default class="{C}_steering">
+      <joint type="hinge" axis="0 0 1" limited="true" frictionloss="0.01" damping="0.001" armature="0.0002" range="-0.38 0.38"/>
+    </default>
+    <default class="{C}_throttle">
+      <joint type="hinge" axis="0 1 0" frictionloss="0.001" damping="0.01" armature="0.01" limited="false"/>
+    </default>
+  </default>
+  <worldbody>
+    <body name="{C}" pos="{InitX} {InitY} 0.0" euler="0 0 {InitT}">
+      <camera name="{C}_third_person" mode="fixed" pos="-1 0 1" xyaxes="0 -1 0 0.707 0 0.707"/>
+      <joint type="free"/>
+
+      <camera name="{C}_realsense_d435i" mode="fixed" pos="-0.005 0 .165" euler="0 4.712 4.712"/>
+      <site name="{C}_imu" pos="-0.005 0 .165"/>
+
+      <geom pos="0 0 0.094655" type="mesh" mass="3.542137" mesh="{C}_mushr_base_nano"/>
+      <geom name="{C}_realsense_d435i" size="0.012525 0.045 0.0125" pos="0.0123949 0 0.162178" mass="0.072" type="box"/>
+      <geom name="{C}_ydlidar" pos="-0.035325 0 0.202405" type="mesh" mass="0.180" mesh="{C}_mushr_ydlidar"/>
+
+      <body name="{C}_steering_wheel" pos="0.1385 0 0.0488">
+        <joint class="{C}_steering" name="{C}_steering_wheel"/>
+        <geom class="{C}_wheel" contype="0" conaffinity="0" mass="0.01" rgba="0 0 0 0.01"/>
+      </body>
+
+      <body name="{C}_wheel_fl" pos="0.1385 0.115 0.0488">
+        <joint class="{C}_steering" name="{C}_wheel_fl_steering"/>
+        <joint class="{C}_throttle" name="{C}_wheel_fl_throttle"/>
+        <geom class="{C}_wheel"/>
+        <geom class="{C}_wheel" type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 0.3"/>
+      </body>
+      <body name="{C}_wheel_fr" pos="0.1385 -0.115 0.0488">
+        <joint class="{C}_steering" name="{C}_wheel_fr_steering"/>
+        <joint class="{C}_throttle" name="{C}_wheel_fr_throttle"/>
+        <geom class="{C}_wheel"/>
+        <geom class="{C}_wheel" type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 0.3"/>
+      </body>
+      <body name="{C}_wheel_bl" pos="-0.158 0.115 0.0488">
+        <joint class="{C}_throttle" name="{C}_wheel_bl_throttle"/>
+        <geom class="{C}_wheel"/>
+        <geom class="{C}_wheel" type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 0.3"/>
+      </body>
+      <body name="{C}_wheel_br" pos="-0.158 -0.115 0.0488">
+        <joint class="{C}_throttle" name="{C}_wheel_br_throttle"/>
+        <geom class="{C}_wheel"/>
+        <geom class="{C}_wheel" type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 0.3"/>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <position class="{C}_steering" kp="25.0" name="{C}_steering_pos" joint="{C}_steering_wheel"/>
+    <velocity kv="100" gear="0.04" forcelimited="true" forcerange="-500 500" name="{C}_throttle_velocity" tendon="{C}_throttle"/>
+  </actuator>
+  <equality>
+    <!-- taylor expansion of delta_l = arctan(L/(L/tan(delta) - W/2)) with L,W in reference to kinematic car model -->
+    <joint joint1="{C}_wheel_fl_steering" joint2="{C}_steering_wheel" polycoef="0 1 0.375 0.140625 -0.0722656"/>
+
+    <!-- taylor expansion of delta_r = arctan(L/(L/tan(delta) + W/2)) with L,W in reference to kinematic car model -->
+    <joint joint1="{C}_wheel_fr_steering" joint2="{C}_steering_wheel" polycoef="0 1 -0.375 0.140625 0.0722656"/>
+  </equality>
+  <tendon>
+    <fixed name="{C}_throttle">
+      <joint joint="{C}_wheel_fl_throttle" coef="0.25"/>
+      <joint joint="{C}_wheel_fr_throttle" coef="0.25"/>
+      <joint joint="{C}_wheel_bl_throttle" coef="0.25"/>
+      <joint joint="{C}_wheel_br_throttle" coef="0.25"/>
+    </fixed>
+  </tendon>
+  <sensor>
+    <accelerometer name="{C}_accelerometer" site="{C}_imu" />
+    <gyro name="{C}_gyro" site="{C}_imu" />
+    <velocimeter name="{C}_velocimeter" site="{C}_imu" />
+  </sensor>
+</mujoco>

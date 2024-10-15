@@ -1,0 +1,57 @@
+﻿mdl 1.3;
+
+import ::math::*;
+import ::state::*;
+import ::tex::*;
+import ::anno::*;
+using OmniUe4Function import *;
+using OmniUe4Base import *;
+
+export annotation sampler_color();
+export annotation sampler_normal();
+export annotation sampler_grayscale();
+export annotation sampler_alpha();
+export annotation sampler_masks();
+export annotation sampler_distancefield();
+export annotation dither_masked_off();
+export annotation world_space_normal();
+
+export material M_TrafficCone(
+	float Param = 5.0)
+ = 
+	let {
+	float3 WorldPositionOffset_mdl = float3(0.0,0.0,0.0);
+	float2 CustomizedUV0_mdl = float2(state::texture_coordinate(0).x,1.0-state::texture_coordinate(0).y);
+
+	float4 Local0 = ::unpack_normal_map(tex::lookup_float4(texture_2d("./Textures/T_TrafficCone_N.png",::tex::gamma_linear),float2(CustomizedUV0_mdl.x,1.0-CustomizedUV0_mdl.y),tex::wrap_repeat,tex::wrap_repeat));
+
+	float3 Normal_mdl = float3(Local0.x,Local0.y,Local0.z);
+
+	float4 Local1 = tex::lookup_float4(texture_2d("./Textures/T_TrafficCone_D.png",::tex::gamma_srgb),float2(CustomizedUV0_mdl.x,1.0-CustomizedUV0_mdl.y),tex::wrap_repeat,tex::wrap_repeat);
+	float4 Local2 = tex::lookup_float4(texture_2d("./Textures/T_TrafficCone_Stripes.png",::tex::gamma_linear),float2(CustomizedUV0_mdl.x,1.0-CustomizedUV0_mdl.y),tex::wrap_repeat,tex::wrap_repeat);
+	float3 Local3 = (float3(Local1.x,Local1.y,Local1.z) * float3(Local2.x,Local2.y,Local2.z));
+	float3 Local4 = (Local3 * Param);
+	float3 Local5 = ::transform_vector_from_tangent_to_world(float3(float3(Local0.x,Local0.y,Local0.z).x,float3(Local0.x,Local0.y,Local0.z).y,float3(Local0.x,Local0.y,Local0.z).z));
+	float Local6 = ::fresnel(0.05, 0.1, Local5);
+	float Local7 = (1.0 - Local6);
+	float3 Local8 = (Local4 * Local7);
+	float4 Local9 = tex::lookup_float4(texture_2d("./Textures/T_TrafficCone_ORM.png",::tex::gamma_linear),float2(CustomizedUV0_mdl.x,1.0-CustomizedUV0_mdl.y),tex::wrap_repeat,tex::wrap_repeat);
+
+	float3 EmissiveColor_mdl = Local8;
+	float OpacityMask_mdl = 1.0;
+	float3 BaseColor_mdl = float3(Local1.x,Local1.y,Local1.z);
+	float Metallic_mdl = Local9.z;
+	float Specular_mdl = 0.5;
+	float Roughness_mdl = Local9.y;
+
+	} in
+		::OmniUe4Base(
+			base_color: BaseColor_mdl,
+			metallic: Metallic_mdl,
+			roughness: Roughness_mdl,
+			specular: Specular_mdl,
+			normal: Normal_mdl,
+			opacity: OpacityMask_mdl,
+			emissive_color: EmissiveColor_mdl,
+			displacement: WorldPositionOffset_mdl,
+			two_sided: false);

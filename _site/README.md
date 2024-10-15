@@ -1,1 +1,0 @@
-# Webpage for [https://lecar-lab.github.io/anycar/](https://lecar-lab.github.io/anycar/)

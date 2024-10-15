@@ -1,0 +1,49 @@
+heightmap:
+  filename: heightmap.png
+  scale: 0.0
+respawn_loc:
+  pitch: 0
+  roll: 0
+  x: 120.0
+  y: 3.0
+  yaw: 0
+  z: 120.0
+sensors:
+  camera: true
+  imu: true
+  lidar: true
+  pose: true
+timescale: 1.0
+track_info:
+  bush_demarcation: 0.5
+  centerline_file: interpolated_traj.csv
+  obs_density: 0.0
+  offtrack_roughness: 0.0
+  ox: 0.0
+  oy: 0.0
+  scale: 1.0
+  texture_blend_factor: 0.9
+  track_width: 10.0
+  vegetation_density: 0.2
+vehicle_params:
+  Bf: 10.0
+  Br: 10.0
+  Cf: 1.0
+  Cr: 1.0
+  I: 0.3
+  K_aero: 0.3
+  K_brake: 50.0
+  K_cmd: 50.0
+  K_friction: 0.0
+  K_steer: 1.0
+  K_v: 10.0
+  Lf: 0.17
+  Lr: 0.17
+  delay: 0
+  g: 9.81
+  h_cg: 0.0
+  m: 10.0
+  max_steer: 0.34
+  mu_f: 0.9
+  mu_r: 0.9
+  v_kin: 1.0

@@ -1,0 +1,7 @@
+setup.py
+car_dataset/__init__.py
+car_dataset/dataset.py
+car_dataset.egg-info/PKG-INFO
+car_dataset.egg-info/SOURCES.txt
+car_dataset.egg-info/dependency_links.txt
+car_dataset.egg-info/top_level.txt

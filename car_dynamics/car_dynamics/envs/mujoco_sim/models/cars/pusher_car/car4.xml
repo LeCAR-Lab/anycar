@@ -1,0 +1,88 @@
+<mujoco>
+  <compiler meshdir="cars/meshes" />
+  <asset>
+    <mesh name="car4_mushr_base_nano" file="mushr_base_nano.stl"/>
+    <mesh name="car4_mushr_wheel" file="mushr_wheel.stl"/>
+    <mesh name="car4_mushr_ydlidar" file="mushr_ydlidar.stl"/>
+  </asset>
+  <default>
+      <default class="car4_wheel">
+      <geom fitscale="1.2" type="ellipsoid" friction="2 0.005 0.0001" contype="1" conaffinity="0" mesh="car4_mushr_wheel" mass="0.498952"/>
+    </default>
+    <default class="car4_steering">
+      <joint type="hinge" axis="0 0 1" limited="true" frictionloss="0.01" damping="0.001" armature="0.0002" range="-0.38 0.38"/>
+    </default>
+    <default class="car4_throttle">
+      <joint type="hinge" axis="0 1 0" frictionloss="0.001" damping="0.01" armature="0.01" limited="false"/>
+    </default>
+  </default>
+  <worldbody>
+    <body name="car4" pos="0.0 -2.0 0.0" euler="0 0 0.0">
+      <camera name="car4_third_person" mode="fixed" pos="-1 0 1" xyaxes="0 -1 0 0.707 0 0.707"/>
+      <joint type="free"/>
+
+      <camera name="car4_realsense_d435i" mode="fixed" pos="-0.005 0 .165" euler="0 4.712 4.712"/>
+      <site name="car4_imu" pos="-0.005 0 .165"/>
+
+      <geom pos="0 0 0.094655" type="mesh" mass="3.542137" mesh="car4_mushr_base_nano"/>
+      <geom name="car4_realsense_d435i" size="0.012525 0.045 0.0125" pos="0.0123949 0 0.162178" mass="0.072" type="box"/>
+      <geom name="car4_ydlidar" pos="-0.035325 0 0.202405" type="mesh" mass="0.180" mesh="car4_mushr_ydlidar"/>
+
+      <geom name="car4_pusher_connector" pos="0.2073 0 0.063" type="box" size="0.0025 0.025 0.02" mass="0.01" />
+      <!-- x=1cm, y=22cm, z=7cm -->
+      <geom name="car4_pusher" pos="0.215 0 0.048" type="box" size=".005 .11 .035" mass="0.05"/>
+
+      <body name="car4_steering_wheel" pos="0.1385 0 0.0488">
+        <joint class="car4_steering" name="car4_steering_wheel"/>
+        <geom class="car4_wheel" contype="0" conaffinity="0" mass="0.01" rgba="0 0 0 0.01"/>
+      </body>
+
+      <body name="car4_wheel_fl" pos="0.1385 0.115 0.0488">
+        <joint class="car4_steering" name="car4_wheel_fl_steering"/>
+        <joint class="car4_throttle" name="car4_wheel_fl_throttle"/>
+        <geom class="car4_wheel"/>
+        <geom class="car4_wheel" type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 0.3"/>
+      </body>
+      <body name="car4_wheel_fr" pos="0.1385 -0.115 0.0488">
+        <joint class="car4_steering" name="car4_wheel_fr_steering"/>
+        <joint class="car4_throttle" name="car4_wheel_fr_throttle"/>
+        <geom class="car4_wheel"/>
+        <geom class="car4_wheel" type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 0.3"/>
+      </body>
+      <body name="car4_wheel_bl" pos="-0.158 0.115 0.0488">
+        <joint class="car4_throttle" name="car4_wheel_bl_throttle"/>
+        <geom class="car4_wheel"/>
+        <geom class="car4_wheel" type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 0.3"/>
+      </body>
+      <body name="car4_wheel_br" pos="-0.158 -0.115 0.0488">
+        <joint class="car4_throttle" name="car4_wheel_br_throttle"/>
+        <geom class="car4_wheel"/>
+        <geom class="car4_wheel" type="mesh" contype="0" conaffinity="0" group="1" rgba="1 1 1 0.3"/>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <position class="car4_steering" kp="25.0" name="car4_steering_pos" joint="car4_steering_wheel"/>
+    <velocity kv="100" gear="0.04" forcelimited="true" forcerange="-500 500" name="car4_throttle_velocity" tendon="car4_throttle"/>
+  </actuator>
+  <equality>
+    <!-- taylor expansion of delta_l = arctan(L/(L/tan(delta) - W/2)) with L,W in reference to kinematic car model -->
+    <joint joint1="car4_wheel_fl_steering" joint2="car4_steering_wheel" polycoef="0 1 0.375 0.140625 -0.0722656"/>
+
+    <!-- taylor expansion of delta_r = arctan(L/(L/tan(delta) + W/2)) with L,W in reference to kinematic car model -->
+    <joint joint1="car4_wheel_fr_steering" joint2="car4_steering_wheel" polycoef="0 1 -0.375 0.140625 0.0722656"/>
+  </equality>
+  <tendon>
+    <fixed name="car4_throttle">
+      <joint joint="car4_wheel_fl_throttle" coef="0.25"/>
+      <joint joint="car4_wheel_fr_throttle" coef="0.25"/>
+      <joint joint="car4_wheel_bl_throttle" coef="0.25"/>
+      <joint joint="car4_wheel_br_throttle" coef="0.25"/>
+    </fixed>
+  </tendon>
+  <sensor>
+    <accelerometer name="car4_accelerometer" site="car4_imu" />
+    <gyro name="car4_gyro" site="car4_imu" />
+    <velocimeter name="car4_velocimeter" site="car4_imu" />
+  </sensor>
+</mujoco>

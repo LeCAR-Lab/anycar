@@ -1,0 +1,12 @@
+torch
+numpy==1.26
+casadi
+scipy
+flax
+tqdm
+pykan
+transforms3d
+scikit-learn
+wandb
+transformers
+pytorch-warmup

@@ -1,0 +1,7 @@
+*.egg-info/
+*.pyc
+Train_env_timers.json
+*/Train_env_timers.json
+*.pkl
+tmp/
+envs/assetto_corsa/output/

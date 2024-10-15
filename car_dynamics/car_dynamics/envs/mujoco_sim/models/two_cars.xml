@@ -1,0 +1,22 @@
+<!-- TODO -->
+<!-- (1) correct mass/inertial matricies (just weight for now) -->
+<mujoco model="mushr_nano">
+  <compiler angle="radian" />
+  <size njmax="500" nconmax="100"/>
+  <option timestep="0.01"/>
+  <include file="cars/base_car/buddy.xml"/>
+  <include file="cars/base_car/goose.xml"/>
+  <asset>
+    <texture name="texplane" type="2d" builtin="checker" rgb1="0.26 0.12 0.36" rgb2="0.23 0.09 0.33" width="512" height="512" mark="cross" markrgb=".8 .8 .8"/>
+    <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" random="0.01"/>
+    <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="1 1" texuniform="true"/>
+    <material name="matgeom" texture="texgeom" texuniform="true" rgba="0.8 0.6 .4 1"/>
+  </asset>
+  <visual>
+    <headlight ambient="0.6 0.6 0.6" diffuse="0.5 0.5 0.5" specular="0.2 0.2 0.2"/>
+    <map znear="0.001" />
+  </visual>
+  <worldbody>
+    <geom contype="1" friction=".5 0.005 0.0001" name="floor" pos="0 0 0" size="0 0 .25" type="plane" material="matplane" condim="3"/> -->
+  </worldbody>
+</mujoco>

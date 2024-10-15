@@ -1,0 +1,16 @@
+repositories:
+    external/drivers/vesc:
+        type: git
+        url: git@github.com:airacingtech/vesc.git
+        version: art-iron
+    external/interfaces/f1tenth-interface:
+        type: git
+        url: git@github.com:airacingtech/f1tenth-interface.git
+        version: art-iron
+    external/race_common:
+        type: git
+        url: git@github.com:airacingtech/race_common.git
+    external/mpc/Racing-LMPC-ROS2:
+        type: git
+        url: git@github.com:HaoruXue/Racing-LMPC-ROS2.git
+        version: iron
