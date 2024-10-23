@@ -53,8 +53,7 @@
     ```
 
 8. Download [Foxglove Studio](https://foxglove.dev/download) and import the visualization config from `misc/anycar-vis.json`
-
-
+   
 ## Quick Start
 
 1. run foxglove node:
@@ -78,6 +77,8 @@ Expected to see:
 <img src="./media/foxglove.gif" width="600px"/>
 
 </div>
+
+> For this example environment, we provide an [example checkpoint](https://huggingface.co/wenlixiao/anycar-sim-small/tree/main/anycar_model_checkpoint). Please put folder under `car_foundation/car_foundation/models/`.
 
 
 
