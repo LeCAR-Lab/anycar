@@ -91,7 +91,7 @@ class CarNode(Node):
             elif DYNAMICS == "transformer-jax":
                 ## Load Transformer
                 self.dynamics = DynamicsJax({
-                    "model_path": os.path.join(CAR_FOUNDATION_MODEL_DIR, "2024-07-21T14:26:18.734-model_checkpoint/500/default"), # pt
+                    "model_path": os.path.join(CAR_FOUNDATION_MODEL_DIR, "anycar_model_checkpoint/500/default"), # pt
                 })
                 print(colored("Loaded JAX transformer model", "green"))
                 print(colored(type(self.dynamics), "blue"))
