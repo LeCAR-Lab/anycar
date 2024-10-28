@@ -36,23 +36,37 @@
 4. Install python dependencies
 
     ```bash
-    mamba install -r requirements.txt
+    pip install -r requirements.txt
     ```
 
 5. Add the path of this project folder to your environment path `CAR_PATH`
 
-6. Build the project
+    ```bash
+    export CAR_PATH=$(pwd)
+    ```
+
+6. Add Python Path and Interpreter for ROS2 Compatibility
+
+    - get python path: `which python`
+    - get python path to packages: `python -c "import site; print(site.getsitepackages()[0])"`
+
+    ```bash
+    export PYTHON_EXECUTABLE=PATH-OF-PYTHON
+    export PYTHONPATH=PATH-OF-PYTHON-SITE-PACKAGES:$PYTHONPATH
+    ```
+
+7. Build the project
     ```bash
     colcon build
     ```
 
-7. Source the environment
+8. Source the environment
 
     ```bash
     source install/setup.bash 
     ```
 
-8. Download [Foxglove Studio](https://foxglove.dev/download) and import the visualization config from `misc/anycar-vis.json`
+9. Download [Foxglove Studio](https://foxglove.dev/download) and import the visualization config from `misc/anycar-vis.json`
    
 ## Quick Start
 
